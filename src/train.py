@@ -57,8 +57,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 MODEL_PATH = BASE_DIR / "models" / "house_price_model.pkl"
 
 
+
 def save_model(model):
     """Save the trained model."""
+
+    # Create the models directory if it doesn't exist
+    MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
+
     joblib.dump(model, MODEL_PATH)
 
 from sklearn.ensemble import RandomForestRegressor
