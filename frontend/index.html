@@ -17,75 +17,98 @@
         <h1>🏠 House Price Prediction</h1>
 
         <form id="prediction-form">
-            <label for="MedInc">Median Income</label>
-            <input
-                type="number"
-                id="MedInc"
-                step="0.1"
-                required
-            >
 
-            <label for="HouseAge">House Age</label>
-            <input
-                type="number"
-                id="HouseAge"
-                step="0.1"
-                required
-            >
+        <label for="MedInc">Median Income</label>
+        <input
+            type="number"
+            id="MedInc"
+            min="0"
+            max="20"
+            step="0.1"
+            required
+        >
 
-            <label for="AveRooms">Average Rooms</label>
-            <input
-                type="number"
-                id="AveRooms"
-                step="0.1"
-                required
-            >
+        <label for="HouseAge">House Age (Years)</label>
+        <input
+            type="number"
+            id="HouseAge"
+            min="1"
+            max="100"
+            step="1"
+            required
+        >
 
-            <label for="AveBedrms">Average Bedrooms</label>
-            <input
-                type="number"
-                id="AveBedrms"
-                step="0.1"
-                required
-            >
+        <label for="AveRooms">Average Rooms</label>
+        <input
+            type="number"
+            id="AveRooms"
+            min="1"
+            max="20"
+            step="0.1"
+            required
+        >
 
-            <label for="Population">Population</label>
-            <input
-                type="number"
-                id="Population"
-                required
-            >
+        <label for="AveBedrms">Average Bedrooms</label>
+        <input
+            type="number"
+            id="AveBedrms"
+            min="0.1"
+            max="10"
+            step="0.1"
+            required
+        >
 
-            <label for="AveOccup">Average Occupancy</label>
-            <input
-                type="number"
-                id="AveOccup"
-                step="0.1"
-                required
-            >
+        <label for="Population">Population</label>
+        <input
+            type="number"
+            id="Population"
+            min="1"
+            max="50000"
+            step="1"
+            required
+        >
 
-            <label for="Latitude">Latitude</label>
-            <input
-                type="number"
-                id="Latitude"
-                step="0.0001"
-                required
-            >
+        <label for="AveOccup">Average Occupancy</label>
+        <input
+            type="number"
+            id="AveOccup"
+            min="0.1"
+            max="20"
+            step="0.1"
+            required
+        >
 
-            <label for="Longitude">Longitude</label>
-            <input
-                type="number"
-                id="Longitude"
-                step="0.0001"
-                required
-            >
+        <label for="Latitude">Latitude</label>
+        <input
+            type="number"
+            id="Latitude"
+            min="-90"
+            max="90"
+            step="0.0001"
+            required
+        >
 
-            <button id="predict-btn" type="submit">
-                Predict Price
-            </button>
+        <label for="Longitude">Longitude</label>
+        <input
+            type="number"
+            id="Longitude"
+            min="-180"
+            max="180"
+            step="0.0001"
+            required
+        >
 
-        </form>
-        <h2 id="result"></h2>
+        <button id="predict-btn" type="submit">
+            Predict Price
+        </button>
+
+        <button type="reset">
+            Reset
+        </button>
+
+    </form>
+
+    <h2 id="result"></h2>
 
 
     </div>
