@@ -1,9 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from src.logger import logger
-
 from src.schemas import HouseFeatures
 from src.model_loader import load_model
 from src.predict import predict_price
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="House Price Prediction API",
@@ -13,6 +13,16 @@ app = FastAPI(
     This API accepts housing features and returns the predicted house price.
     """,
     version="1.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:8000"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 model = load_model()
