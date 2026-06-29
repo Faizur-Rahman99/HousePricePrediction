@@ -1,45 +1,122 @@
-# 🏠 House Price Prediction API
+# 🏠 House Price Prediction
 
-An end-to-end Machine Learning project that predicts California house prices using a Random Forest Regressor and serves predictions through a FastAPI REST API.
-
-## 🚀 Features
-
-- Predict house prices using 8 housing features
-- REST API built with FastAPI
-- Automatic request validation using Pydantic
-- Trained Random Forest model
-- Modular project structure
-- Interactive API documentation with Swagger UI
+A full-stack Machine Learning web application that predicts California house prices using a **Random Forest Regression** model. The application features a responsive web interface, a FastAPI backend, and is fully deployed on Render.
 
 ---
 
-## 🛠 Technologies Used
+# 🌐 Live Demo
 
-- Python
-- Pandas
-- Scikit-learn
-- FastAPI
-- Pydantic
-- Joblib
-- Uvicorn
+### Frontend
+
+https://house-price-predictor-ui-xk1f.onrender.com
+
+### Backend API
+
+https://housepriceprediction-lyyr.onrender.com
+
+### Interactive API Documentation
+
+https://housepriceprediction-lyyr.onrender.com/docs
 
 ---
 
-## 📂 Project Structure
+# 📸 Screenshots
 
-```
+## 🏠 Home Page
+
+![Home Page](screenshots/frontend.png)
+
+---
+
+## 📈 Prediction Result
+
+![Prediction Result](screenshots/prediction.png)
+
+---
+
+## 📚 API Documentation (Swagger UI)
+
+![Swagger UI](screenshots/swagger.png)
+
+
+# 📖 Project Overview
+
+This project predicts California house prices based on eight housing characteristics from the California Housing Dataset.
+
+Users can either:
+
+* Use the interactive web application
+* Send requests directly to the REST API
+
+The machine learning model is trained using Scikit-learn and served through FastAPI.
+
+---
+
+# ✨ Features
+
+* End-to-end Machine Learning application
+* Random Forest Regression model
+* FastAPI REST API
+* Interactive web interface
+* Frontend validation
+* Backend validation using Pydantic
+* Structured logging
+* Error handling
+* Interactive Swagger documentation
+* Fully deployed frontend and backend on Render
+
+---
+
+# 🛠 Tech Stack
+
+## Machine Learning
+
+* Python
+* Scikit-learn
+* Pandas
+* NumPy
+* Joblib
+
+## Backend
+
+* FastAPI
+* Pydantic
+* Uvicorn
+
+## Frontend
+
+* HTML5
+* CSS3
+* JavaScript (Fetch API)
+
+## Deployment
+
+* Git
+* GitHub
+* Render
+
+---
+
+# 📂 Project Structure
+
+```text
 HousePricePrediction/
 │
-├── data/
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
 ├── models/
-├── notebooks/
-├── screenshots/
+│   └── house_price_model.pkl
+│
 ├── src/
 │   ├── api.py
-│   ├── train.py
+│   ├── logger.py
+│   ├── model_loader.py
 │   ├── predict.py
 │   ├── schemas.py
-│   ├── model_loader.py
+│   ├── train.py
 │   └── utils.py
 │
 ├── requirements.txt
@@ -49,63 +126,73 @@ HousePricePrediction/
 
 ---
 
-## 📊 Dataset
+# 📊 Dataset
 
-California Housing Dataset from Scikit-learn.
+This project uses the **California Housing Dataset** provided by Scikit-learn.
 
-Features:
+## Features
 
-- Median Income
-- House Age
-- Average Rooms
-- Average Bedrooms
-- Population
-- Average Occupancy
-- Latitude
-- Longitude
+* Median Income
+* House Age
+* Average Rooms
+* Average Bedrooms
+* Population
+* Average Occupancy
+* Latitude
+* Longitude
 
-Target:
+## Target
 
-- Median House Value
-
----
-
-## 🤖 Machine Learning Workflow
-
-1. Load Dataset
-2. Explore Data
-3. Create Features and Target
-4. Train/Test Split
-5. Train Random Forest Model
-6. Evaluate using MAE
-7. Save Model using Joblib
-8. Serve Model through FastAPI
+* Median House Value
 
 ---
 
-## ▶ Running the Project
+# 🏗 System Architecture
 
-Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-Run the API
-
-```bash
-uvicorn src.api:app --reload
-```
-
-Open
-
-```
-http://127.0.0.1:8000/docs
+```text
+                 Browser
+                     │
+                     ▼
+      HTML / CSS / JavaScript Frontend
+                     │
+             Fetch API Request
+                     │
+                     ▼
+          FastAPI Backend (Render)
+                     │
+          Pydantic Validation
+                     │
+        Random Forest Regression
+                     │
+                     ▼
+             Predicted House Price
+                     │
+                     ▼
+                 Browser
 ```
 
 ---
 
-## 📈 Example Request
+# 🤖 Machine Learning Workflow
+
+1. Load California Housing Dataset
+2. Prepare features and target
+3. Split training and testing data
+4. Train Random Forest Regression model
+5. Evaluate using Mean Absolute Error (MAE)
+6. Save trained model with Joblib
+7. Load model through FastAPI
+8. Serve predictions through REST API
+
+---
+
+# 📡 API Endpoint
+
+## POST /predict
+
+Predicts the price of a California house.
+
+### Example Request
 
 ```json
 {
@@ -120,12 +207,83 @@ http://127.0.0.1:8000/docs
 }
 ```
 
+### Example Response
+
+```json
+{
+  "predicted_price": 4.73,
+  "currency": "USD",
+  "unit": "Hundreds of thousands of dollars",
+  "model": "Random Forest Regressor"
+}
+```
+
 ---
 
-## 📌 Future Improvements
+# ⚙️ Running the Project Locally
 
-- Deploy on Render
-- Build a frontend
-- Add Docker support
-- Add unit tests
-- Add CI/CD pipeline
+## Clone the repository
+
+```bash
+git clone https://github.com/Faizur-Rahman99/HousePricePrediction.git
+```
+
+## Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Run the backend
+
+```bash
+uvicorn src.api:app --reload
+```
+
+Open:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+## Run the frontend
+
+```bash
+cd frontend
+python -m http.server 8000
+```
+
+Open:
+
+```text
+http://localhost:8000
+```
+
+---
+
+# 🚀 Deployment
+
+The project is deployed using **Render**.
+
+* Frontend: Static Site
+* Backend: FastAPI Web Service
+
+---
+
+# 📈 Future Improvements
+
+* Docker support
+* Automated testing with Pytest
+* GitHub Actions CI/CD
+* Improved mobile responsiveness
+* Prediction history
+* Feature importance visualization
+* Support for additional machine learning models
+
+---
+
+# 👨‍💻 Author
+
+**Faizur Rahman**
+
+Built as a portfolio project to demonstrate Machine Learning, FastAPI, frontend development, REST APIs, and cloud deployment.
