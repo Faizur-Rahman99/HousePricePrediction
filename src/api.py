@@ -18,7 +18,8 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:8000"
+        "http://localhost:8000",
+        "https://house-price-predictor-ui-xk1f.onrender.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
