@@ -1,5 +1,6 @@
 from sklearn.datasets import fetch_california_housing
 import pandas as pd
+from src.logger import logger
 
 
 def load_data():
@@ -46,28 +47,48 @@ def evaluate_model(model, X_test, y_test):
 
     return mae
 
+from pathlib import Path
 import joblib
-def save_model(model, model_path= "../models/house_price_model.pkl"):
-    '''This function is used to save the model'''
-    joblib.dump(model, model_path)
+
+# Project root directory
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Full path to the models folder
+MODEL_PATH = BASE_DIR / "models" / "house_price_model.pkl"
+
+
+def save_model(model):
+    """Save the trained model."""
+    joblib.dump(model, MODEL_PATH)
 
 from sklearn.ensemble import RandomForestRegressor
-def main():
+
+def build_and_train_model():
+    """Train a Random Forest model and save it."""
+
     df = load_data()
     X, y = create_features_target(df)
+
     X_train, X_test, y_train, y_test = split_data(X, y)
 
     model = RandomForestRegressor(
         n_estimators=100,
         random_state=42
     )
+
     model = train_model(model, X_train, y_train)
 
     mae = evaluate_model(model, X_test, y_test)
 
-    print(f"MAE: {mae: .3f}")
+    logger.info("Model trained successfully.")
+    logger.info(f"Model MAE: {mae:.3f}")
 
-    save_model(model, "../models/house_price_model.pkl")
+    save_model(model)
+
+    return model
+
+def main():
+    build_and_train_model()
 
 if __name__ == "__main__":
     main()
