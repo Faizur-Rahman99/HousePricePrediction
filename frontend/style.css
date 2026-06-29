@@ -54,3 +54,31 @@ button:hover {
     text-align: center;
     color: green;
 }
+
+.prediction-card{
+    margin-top:30px;
+    padding:25px;
+    border-radius:12px;
+    background:#f5f8ff;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+    text-align:center;
+}
+
+.prediction-card h1{
+    color:#2e7d32;
+    font-size:42px;
+    margin:20px 0;
+}
+
+.prediction-card h2{
+    color:#1e3a8a;
+}
+
+.prediction-card p{
+    color:#555;
+}
+
+button:disabled{
+    background:#9ca3af;
+    cursor:not-allowed;
+}

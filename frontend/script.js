@@ -1,5 +1,6 @@
 const form = document.getElementById("prediction-form");
 const result = document.getElementById("result");
+const button = document.getElementById("predict-btn");
 
 form.addEventListener("submit", async function (event) {
 
@@ -16,7 +17,12 @@ form.addEventListener("submit", async function (event) {
         Longitude: parseFloat(document.getElementById("Longitude").value)
     };
 
-    result.innerHTML = "Predicting...";
+    button.disabled = true;
+    button.innerText = "Predicting...";
+
+    result.innerHTML = `
+        <h3>⏳ Predicting...</h3>
+    `;
 
     try {
 
@@ -37,10 +43,19 @@ form.addEventListener("submit", async function (event) {
 
         const prediction = await response.json();
 
+        button.disabled = false;
+        button.innerText = "Predict Price";
+
+        const price = prediction.predicted_price * 100000;
+
         result.innerHTML = `
-            <h3>Predicted House Price</h3>
-            <p><strong>${prediction.predicted_price}</strong></p>
-            <p>${prediction.unit}</p>
+            <div class="prediction-card">
+                <h2>🏠 Estimated House Price</h2>
+        
+                <h1>$${price.toLocaleString()}</h1>
+        
+                <p>Predicted using the Random Forest Regression model.</p>
+            </div>
         `;
 
         console.log(prediction);
@@ -49,10 +64,18 @@ form.addEventListener("submit", async function (event) {
 
         console.error(error);
 
+        button.disabled = false;
+        button.innerText = "Predict Price";
+
         result.innerHTML = `
-            <p style="color:red;">
-                Failed to connect to the prediction API.
-            </p>
+            <div class="prediction-card">
+                <h2>⚠ Prediction Failed</h2>
+        
+                <p>
+                    Unable to contact the prediction server.
+                    Please try again.
+                </p>
+            </div>
         `;
     }
 
