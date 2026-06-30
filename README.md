@@ -10,7 +10,7 @@ A full-stack Machine Learning web application that predicts California house pri
 
 ---
 
-# 🌐 Live Demo
+## 🌐 Live Demo
 
 ### Frontend
 
@@ -20,94 +20,177 @@ https://house-price-predictor-ui-xk1f.onrender.com
 
 https://housepriceprediction-lyyr.onrender.com
 
-### Interactive API Documentation
+### Swagger Documentation
 
 https://housepriceprediction-lyyr.onrender.com/docs
 
 ---
 
-# 📸 Screenshots
+## 📸 Screenshots
 
-## 🏠 Home Page
+### 🏠 Home Page
 
 ![Home Page](screenshots/frontend.png)
 
 ---
 
-## 📈 Prediction Result
+### 📈 Prediction Result
 
 ![Prediction Result](screenshots/prediction.png)
 
 ---
 
-## 📚 API Documentation (Swagger UI)
+### 📚 API Documentation
 
 ![Swagger UI](screenshots/swagger.png)
 
+---
 
-# 📖 Project Overview
+## 📑 Table of Contents
 
-This project predicts California house prices based on eight housing characteristics from the California Housing Dataset.
-
-Users can either:
-
-* Use the interactive web application
-* Send requests directly to the REST API
-
-The machine learning model is trained using Scikit-learn and served through FastAPI.
+- [Project Overview](#-project-overview)
+- [Features](#-features)
+- [System Architecture](#-system-architecture)
+- [Machine Learning Pipeline](#-machine-learning-pipeline)
+- [Technology Stack](#-technology-stack)
+- [Project Structure](#-project-structure)
+- [Dataset](#-dataset)
+- [Model Performance](#-model-performance)
+- [Installation](#-installation)
+- [Running the Project](#-running-the-project)
+- [API Endpoints](#-api-endpoints)
+- [Example Request](#-example-request)
+- [Example Response](#-example-response)
+- [Future Improvements](#-future-improvements)
+- [Author](#-author)
+- [License](#-license)
 
 ---
 
-# ✨ Features
+## 📖 Project Overview
 
-* End-to-end Machine Learning application
-* Random Forest Regression model
-* FastAPI REST API
-* Interactive web interface
-* Frontend validation
-* Backend validation using Pydantic
-* Structured logging
-* Error handling
-* Interactive Swagger documentation
-* Fully deployed frontend and backend on Render
+This project predicts California house prices using a Machine Learning model trained on the California Housing Dataset from Scikit-learn.
 
----
+The backend is built with **FastAPI**, which exposes REST API endpoints for prediction. The frontend is built using **HTML, CSS and vanilla JavaScript**, allowing users to enter housing features and instantly receive a predicted house price.
 
-# 🛠 Tech Stack
+The project demonstrates an end-to-end Machine Learning workflow including:
 
-## Machine Learning
-
-* Python
-* Scikit-learn
-* Pandas
-* NumPy
-* Joblib
-
-## Backend
-
-* FastAPI
-* Pydantic
-* Uvicorn
-
-## Frontend
-
-* HTML5
-* CSS3
-* JavaScript (Fetch API)
-
-## Deployment
-
-* Git
-* GitHub
-* Render
+- Data loading
+- Model training
+- Model serialization
+- REST API development
+- Frontend integration
+- Cloud deployment
 
 ---
 
-# 📂 Project Structure
+## ✨ Features
 
-```text
+- 🤖 Predict California house prices using Random Forest Regression
+- 🌐 Responsive frontend built with HTML, CSS and JavaScript
+- ⚡ REST API built with FastAPI
+- ✅ Input validation using Pydantic
+- 📄 Interactive Swagger API documentation
+- 🛡️ Error handling and structured logging
+- 💾 Automatic model loading
+- ☁️ Fully deployed on Render
+- 🔄 Frontend connected to deployed backend API
+
+---
+
+## 🏗️ System Architecture
+
+```
+                User
+                  │
+                  ▼
+      HTML / CSS / JavaScript
+             (Frontend)
+                  │
+          POST /predict
+                  │
+                  ▼
+           FastAPI Backend
+                  │
+                  ▼
+     Random Forest Regressor
+                  │
+                  ▼
+        Predicted House Price
+                  │
+                  ▼
+         Displayed on Frontend
+```
+
+---
+
+## 🧠 Machine Learning Pipeline
+
+```
+California Housing Dataset
+            │
+            ▼
+      Data Preparation
+            │
+            ▼
+     Train/Test Split
+            │
+            ▼
+Random Forest Regressor
+            │
+            ▼
+      Model Evaluation
+            │
+            ▼
+   Save Model (Joblib)
+            │
+            ▼
+     FastAPI Prediction API
+            │
+            ▼
+      Frontend Application
+```
+
+---
+
+## 🛠️ Technology Stack
+
+### Machine Learning
+
+- Scikit-learn
+- Pandas
+- NumPy
+- Joblib
+
+### Backend
+
+- FastAPI
+- Uvicorn
+- Pydantic
+
+### Frontend
+
+- HTML5
+- CSS3
+- JavaScript
+
+### Deployment
+
+- Render
+
+### Version Control
+
+- Git
+- GitHub
+
+---
+
+## 📂 Project Structure
+
+```
 HousePricePrediction/
 │
+├── data/
 ├── frontend/
 │   ├── index.html
 │   ├── style.css
@@ -115,6 +198,13 @@ HousePricePrediction/
 │
 ├── models/
 │   └── house_price_model.pkl
+│
+├── notebooks/
+│
+├── screenshots/
+│   ├── frontend.png
+│   ├── prediction.png
+│   └── swagger.png
 │
 ├── src/
 │   ├── api.py
@@ -126,98 +216,158 @@ HousePricePrediction/
 │   └── utils.py
 │
 ├── requirements.txt
+├── render.yaml
+├── runtime.txt
 ├── README.md
-└── .gitignore
+└── LICENSE
 ```
 
 ---
 
-# 📊 Dataset
+## 📊 Dataset
 
-This project uses the **California Housing Dataset** provided by Scikit-learn.
+The project uses the **California Housing Dataset** provided by Scikit-learn.
 
-## Features
+### Features
 
-* Median Income
-* House Age
-* Average Rooms
-* Average Bedrooms
-* Population
-* Average Occupancy
-* Latitude
-* Longitude
+- Median Income
+- House Age
+- Average Rooms
+- Average Bedrooms
+- Population
+- Average Occupancy
+- Latitude
+- Longitude
 
-## Target
+### Target
 
-* Median House Value
+Median House Value
 
 ---
 
-# 🏗 System Architecture
+## 📈 Model Performance
 
-```text
-                 Browser
-                     │
-                     ▼
-      HTML / CSS / JavaScript Frontend
-                     │
-             Fetch API Request
-                     │
-                     ▼
-          FastAPI Backend (Render)
-                     │
-          Pydantic Validation
-                     │
-        Random Forest Regression
-                     │
-                     ▼
-             Predicted House Price
-                     │
-                     ▼
-                 Browser
+### Model
+
+Random Forest Regressor
+
+### Evaluation Metric
+
+Mean Absolute Error (MAE)
+
+### Result
+
+```
+MAE ≈ 0.328
+```
+
+The model predicts California house prices with an average absolute error of approximately 0.328 in the dataset's target units. Lower MAE indicates better prediction accuracy.
+
+---
+
+## 🚀 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/Faizur-Rahman99/HousePricePrediction.git
+```
+
+Move into the project directory
+
+```bash
+cd HousePricePrediction
+```
+
+Create a virtual environment
+
+```bash
+python -m venv venv
+```
+
+Activate it
+
+Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
 ```
 
 ---
 
-# 🤖 Machine Learning Workflow
+## ▶ Running the Project
 
-1. Load California Housing Dataset
-2. Prepare features and target
-3. Split training and testing data
-4. Train Random Forest Regression model
-5. Evaluate using Mean Absolute Error (MAE)
-6. Save trained model with Joblib
-7. Load model through FastAPI
-8. Serve predictions through REST API
+Start the FastAPI server
+
+```bash
+uvicorn src.api:app --reload
+```
+
+Backend
+
+```
+http://127.0.0.1:8000
+```
+
+Swagger Documentation
+
+```
+http://127.0.0.1:8000/docs
+```
+
+To run the frontend locally
+
+```bash
+cd frontend
+python -m http.server 8000
+```
+
+Open
+
+```
+http://localhost:8000
+```
 
 ---
 
-# 📡 API Endpoint
+## 📡 API Endpoints
 
-## POST /predict
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | / | Home endpoint |
+| GET | /health | Health check |
+| POST | /predict | Predict house price |
 
-Predicts the price of a California house.
+---
 
-### Example Request
+## 📤 Example Request
 
 ```json
 {
-  "MedInc": 8.3,
-  "HouseAge": 60,
-  "AveRooms": 5.5,
-  "AveBedrms": 1.0,
-  "Population": 1000,
-  "AveOccup": 2.5,
-  "Latitude": 34.2,
-  "Longitude": -118.4
+  "MedInc": 8.5,
+  "HouseAge": 35,
+  "AveRooms": 6.2,
+  "AveBedrms": 1.1,
+  "Population": 1200,
+  "AveOccup": 3.2,
+  "Latitude": 34.05,
+  "Longitude": -118.25
 }
 ```
 
-### Example Response
+---
+
+## 📥 Example Response
 
 ```json
 {
-  "predicted_price": 4.73,
+  "predicted_price": 4.82,
   "currency": "USD",
   "unit": "Hundreds of thousands of dollars",
   "model": "Random Forest Regressor"
@@ -226,70 +376,31 @@ Predicts the price of a California house.
 
 ---
 
-# ⚙️ Running the Project Locally
+## 🎯 Future Improvements
 
-## Clone the repository
-
-```bash
-git clone https://github.com/Faizur-Rahman99/HousePricePrediction.git
-```
-
-## Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-## Run the backend
-
-```bash
-uvicorn src.api:app --reload
-```
-
-Open:
-
-```text
-http://127.0.0.1:8000/docs
-```
-
-## Run the frontend
-
-```bash
-cd frontend
-python -m http.server 8000
-```
-
-Open:
-
-```text
-http://localhost:8000
-```
-
+- [ ] Containerize the application using Docker
+- [ ] Add automated unit tests with Pytest
+- [ ] Configure CI/CD using GitHub Actions
+- [ ] Compare multiple regression models
+- [ ] Add feature importance visualization
+- [ ] Store prediction history in a database
+- [ ] Implement user authentication
+- [ ] Build an interactive analytics dashboard
+- [ ] Retrain the model using updated datasets
 ---
 
-# 🚀 Deployment
-
-The project is deployed using **Render**.
-
-* Frontend: Static Site
-* Backend: FastAPI Web Service
-
----
-
-# 📈 Future Improvements
-
-* Docker support
-* Automated testing with Pytest
-* GitHub Actions CI/CD
-* Improved mobile responsiveness
-* Prediction history
-* Feature importance visualization
-* Support for additional machine learning models
-
----
-
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 **Faizur Rahman**
 
-Built as a portfolio project to demonstrate Machine Learning, FastAPI, frontend development, REST APIs, and cloud deployment.
+GitHub: https://github.com/Faizur-Rahman99
+
+LinkedIn: *www.linkedin.com/in/faizur-rahman99*
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+See the **LICENSE** file for details.
