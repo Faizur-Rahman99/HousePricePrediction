@@ -8,6 +8,7 @@
 
 A full-stack Machine Learning web application that predicts California house prices using a **Random Forest Regression** model. The application features a responsive web interface, a FastAPI backend, and is fully deployed on Render.
 
+**Current Version:** v1.0.0
 ---
 
 ## 🌐 Live Demo
@@ -58,6 +59,8 @@ https://housepriceprediction-lyyr.onrender.com/docs
 - [Model Performance](#-model-performance)
 - [Installation](#-installation)
 - [Running the Project](#-running-the-project)
+- [Running with Docker](#-running-with-docker)
+- [Running Tests](#-running-tests)
 - [API Endpoints](#-api-endpoints)
 - [Example Request](#-example-request)
 - [Example Response](#-example-response)
@@ -95,6 +98,12 @@ The project demonstrates an end-to-end Machine Learning workflow including:
 - 💾 Automatic model loading
 - ☁️ Fully deployed on Render
 - 🔄 Frontend connected to deployed backend API
+- 🐳 Docker support
+- 🧪 Automated API testing with Pytest
+- ⚙️ Continuous Integration with GitHub Actions
+- 🎨 Code formatting with Black
+- 🔍 Static analysis with Ruff
+- 📦 Import sorting with isort
 
 ---
 
@@ -174,6 +183,20 @@ Random Forest Regressor
 - CSS3
 - JavaScript
 
+### Testing
+
+- Pytest
+
+### DevOps & Code Quality
+
+- Docker
+- GitHub Actions
+- Pytest
+- Black
+- Ruff
+- isort
+- pre-commit
+
 ### Deployment
 
 - Render
@@ -190,7 +213,12 @@ Random Forest Regressor
 ```
 HousePricePrediction/
 │
+├── .github/
+│   └── workflows/
+│       └── python-tests.yml
+│
 ├── data/
+│
 ├── frontend/
 │   ├── index.html
 │   ├── style.css
@@ -215,11 +243,22 @@ HousePricePrediction/
 │   ├── train.py
 │   └── utils.py
 │
-├── requirements.txt
+├── tests/
+│   ├── test_health.py
+│   ├── test_home.py
+│   └── test_predict.py
+│
+├── .dockerignore
+├── .gitignore
+├── .pre-commit-config.yaml
+├── docker-compose.yml
+├── Dockerfile
+├── pyproject.toml
 ├── render.yaml
+├── requirements.txt
 ├── runtime.txt
-├── README.md
-└── LICENSE
+├── LICENSE
+└── README.md
 ```
 
 ---
@@ -333,7 +372,51 @@ Open
 ```
 http://localhost:8000
 ```
+## 🐳 Running with Docker
 
+Build the image:
+
+```bash
+docker compose build
+```
+
+Run the application:
+
+```bash
+docker compose up
+```
+
+The API will be available at:
+
+```
+http://localhost:8000
+```
+
+## 🧪 Running Tests
+
+Run the test suite:
+
+```bash
+pytest
+```
+
+Format code:
+
+```bash
+black .
+```
+
+Sort imports:
+
+```bash
+isort .
+```
+
+Lint the project:
+
+```bash
+ruff check .
+```
 ---
 
 ## 📡 API Endpoints
@@ -378,15 +461,15 @@ http://localhost:8000
 
 ## 🎯 Future Improvements
 
-- [ ] Containerize the application using Docker
-- [ ] Add automated unit tests with Pytest
-- [ ] Configure CI/CD using GitHub Actions
-- [ ] Compare multiple regression models
-- [ ] Add feature importance visualization
-- [ ] Store prediction history in a database
-- [ ] Implement user authentication
-- [ ] Build an interactive analytics dashboard
-- [ ] Retrain the model using updated datasets
+- [ ] User authentication
+- [ ] Database integration
+- [ ] Model versioning
+- [ ] Explainable AI (SHAP)
+- [ ] Multiple ML model comparison
+- [ ] Interactive prediction visualizations
+- [ ] Dark mode
+- [ ] Kubernetes deployment
+- [ ] Automated model retraining pipeline
 ---
 
 ## 👨‍💻 Author
