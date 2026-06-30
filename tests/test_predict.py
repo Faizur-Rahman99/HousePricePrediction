@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+
 from src.api import app
 
 client = TestClient(app)
@@ -13,7 +14,7 @@ def test_predict_valid():
         "Population": 1200,
         "AveOccup": 3.2,
         "Latitude": 34.05,
-        "Longitude": -118.25
+        "Longitude": -118.25,
     }
 
     response = client.post("/predict", json=payload)
@@ -36,7 +37,7 @@ def test_predict_missing_field():
         "AveBedrms": 1.1,
         "Population": 1200,
         "AveOccup": 3.2,
-        "Latitude": 34.05
+        "Latitude": 34.05,
     }
 
     response = client.post("/predict", json=payload)
@@ -53,7 +54,7 @@ def test_predict_invalid_datatype():
         "Population": 1200,
         "AveOccup": 3.2,
         "Latitude": 34.05,
-        "Longitude": -118.25
+        "Longitude": -118.25,
     }
 
     response = client.post("/predict", json=payload)
@@ -70,7 +71,7 @@ def test_predict_invalid_latitude():
         "Population": 1200,
         "AveOccup": 3.2,
         "Latitude": 120,
-        "Longitude": -118.25
+        "Longitude": -118.25,
     }
 
     response = client.post("/predict", json=payload)

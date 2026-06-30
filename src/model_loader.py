@@ -1,7 +1,8 @@
 from pathlib import Path
-import joblib
-from src.logger import logger
 
+import joblib
+
+from src.logger import logger
 from src.train import build_and_train_model
 
 # Project root directory

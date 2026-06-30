@@ -1,17 +1,22 @@
 import pandas as pd
 
+
 def prepare_input(features):
 
-    input_data = pd.DataFrame([{
-        "MedInc": features.MedInc,
-        "HouseAge": features.HouseAge,
-        "AveRooms": features.AveRooms,
-        "AveBedrms": features.AveBedrms,
-        "Population": features.Population,
-        "AveOccup": features.AveOccup,
-        "Latitude": features.Latitude,
-        "Longitude": features.Longitude
-    }])
+    input_data = pd.DataFrame(
+        [
+            {
+                "MedInc": features.MedInc,
+                "HouseAge": features.HouseAge,
+                "AveRooms": features.AveRooms,
+                "AveBedrms": features.AveBedrms,
+                "Population": features.Population,
+                "AveOccup": features.AveOccup,
+                "Latitude": features.Latitude,
+                "Longitude": features.Longitude,
+            }
+        ]
+    )
 
     return input_data
 
